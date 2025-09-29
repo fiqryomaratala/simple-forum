@@ -1,0 +1,44 @@
+# ## Dependencies ###
+# Mengabaikan direktori vendor yang berisi dependensi proyek.
+# Biasanya dikelola oleh Go Modules dan tidak perlu dimasukkan ke version control.
+vendor/
+
+# ## Build files ###
+# Mengabaikan hasil kompilasi atau file binary.
+# File-file ini dihasilkan setiap kali Anda melakukan build dan tidak seharusnya
+# disimpan di Git. Nama binary biasanya sama dengan nama direktori proyek.
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# ## Test files ###
+# Mengabaikan file-file yang dihasilkan selama testing.
+*.test
+
+# ## IDE/Editor directories ###
+# Mengabaikan file dan direktori konfigurasi spesifik untuk IDE atau editor tertentu.
+# Ini membantu agar setiap developer bisa menggunakan pengaturan editornya sendiri
+# tanpa mengganggu yang lain.
+
+# GoLand / IntelliJ
+.idea/
+
+# Vim
+*~
+*.swp
+
+# ## Environment files ###
+# Mengabaikan file yang berisi variabel lingkungan (environment variables).
+# File ini sering kali berisi informasi sensitif seperti API key atau kredensial database,
+# sehingga sangat penting untuk tidak memasukkannya ke Git.
+.env
+.env.*
+!.env.example
+
+# ## Miscellaneous ###
+# Mengabaikan file log, file sementara, dan file sistem operasi.
+*.log
+*.tmp
+.DS_Store # Khusus untuk macOS
