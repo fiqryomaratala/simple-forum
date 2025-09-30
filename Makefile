@@ -1,7 +1,5 @@
-# Set environment variable
-export MYSQL_URL='mysql://root:superSecretPassword@localhost:3306/simple-forum'
+MYSQL_URL = "mysql://root:superSecretPassword@tcp(localhost:3306)/simple-forum"
 
-# Makefile targets
 migrate-create:
 	@ migrate create -ext sql -dir scripts/migrations -seq $(name)
 

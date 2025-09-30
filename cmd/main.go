@@ -5,6 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+import (
+	_ "github.com/go-sql-driver/mysql"
+)
+
 func main() {
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
