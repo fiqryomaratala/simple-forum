@@ -28,14 +28,14 @@ func Init(opts ...Option) error {
 	viper.SetConfigType(opt.configType)
 	viper.AutomaticEnv()
 
-	config := new(Config)
+	config = new(Config)
 
 	err := viper.ReadInConfig()
 	if err != nil {
 		return err
 	}
 
-	return viper.Unmarshal(config)
+	return viper.Unmarshal(&config)
 }
 
 type Option func(*option)
@@ -50,4 +50,34 @@ func getDefaultConfigFile() string {
 
 func getDefaultConfigType() string {
 	return "yaml"
+}
+
+// Function yang di integrasikan ke package main
+
+func WithConfigFolder(configFolders []string) Option {
+	return func(opt *option) {
+		opt.configFolders = configFolders
+	}
+
+}
+
+func WithConfigFile(configFile string) Option {
+	return func(opt *option) {
+		opt.configFile = configFile
+	}
+}
+
+func WithConfigType(configType string) Option {
+	return func(opt *option) {
+		opt.configType = configType
+	}
+}
+
+//Config disini mengacu pada variable global yang sudah di definisikan di file main
+
+func Get() *Config {
+	if config == nil {
+		config = &Config{}
+	}
+	return config
 }
