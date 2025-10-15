@@ -2,6 +2,7 @@ package memberships
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/fiqryomaratala/simple-forum/internal/model/memberships"
 )
@@ -17,6 +18,9 @@ func (r *repository) GetUser(ctx context.Context, email, username string) (*memb
 	err := row.Scan(&response.ID, &response.Email, &response.Password, &response.Username,
 		&response.CreatedBy, &response.CreatedAt, &response.UpdatedAt, &response.CreatedBy)
 	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, nil
+		}
 		return nil, err
 	}
 	return &response, nil

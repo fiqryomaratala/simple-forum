@@ -7,7 +7,7 @@ import "time"
 //Membuat SignUp request untuk menerima request saat ada yang melakukan SignUp dari Front-End
 
 type (
-	SignUp struct {
+	SignUpRequest struct {
 		Email    string `json:"email"`
 		Username string `json:"username"`
 		Password string `json:"password"`
